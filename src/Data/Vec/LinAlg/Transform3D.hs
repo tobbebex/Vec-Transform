@@ -31,7 +31,7 @@ module Data.Vec.LinAlg.Transform3D (
 import Data.Vec
 
 -- | A 4x4 translation matrix
-translation :: Num a => Vec3 a -> Mat44 a
+translation :: (Eq a, Show a, Num a) => Vec3 a -> Mat44 a
 translation = flip translate identity
 
 -- | A 4x4 rotation matrix for a rotation around the X axis
@@ -76,7 +76,7 @@ rotationVec (x:.y:.z:.()) a =
 
 -- | A 4x4 rotation matrix from the euler angles yaw pitch and roll. Could be useful in e.g.
 --   first person shooter games,
-rotationEuler :: Floating a
+rotationEuler :: (Eq a, Show a, Floating a)
               => Vec3 a -- rotation around x, y and z respectively
               -> Mat44 a
 rotationEuler (x:.y:.z:.()) = rotationZ z `multmm` rotationY y `multmm` rotationX x
@@ -92,7 +92,7 @@ rotationQuat (x:.y:.z:.w:.()) =
                  0, 0, 0, 1]
 
 -- | A 4x4 rotation matrix for turning toward a point. Useful for targeting a camera to a specific point.
-rotationLookAt :: Floating a
+rotationLookAt :: (Eq a, Show a, Floating a)
                => Vec3 a -- ^ The up direction, not necessary unit length or perpendicular to the view vector
                -> Vec3 a -- ^ The viewers position
                -> Vec3 a -- ^ The point to look at
@@ -104,7 +104,7 @@ rotationLookAt up' pos target = transpose $ homVec left :. homVec up :. homVec f
         up = forward `cross`left
 
 -- | A 4x4 scaling matrix
-scaling :: Num a => Vec3 a -> Mat44 a
+scaling :: (Eq a, Show a, Num a) => Vec3 a -> Mat44 a
 scaling = diagonal . homPoint
 
 -- | A perspective projection matrix for a right handed coordinate system looking down negative z. This will project far plane to @z = +1@ and near plane to @z = -1@, i.e. into a left handed system.
