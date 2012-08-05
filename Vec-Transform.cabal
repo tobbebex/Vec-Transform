@@ -1,21 +1,15 @@
 name:                Vec-Transform
-version:             1.0.7
+version:             1.1
 cabal-version:       >= 1.8
 build-type:          Simple
 license:             BSD3
 license-file:        ""
 copyright:           Tobias Bexelius
 maintainer:          Tobias Bexelius
-synopsis:            Obsolete
-description:         This package is now obsolete since all functions have moved to the Vec package. This package simply reexports them for backward compatibility.
+synopsis:            This package is obsolete
+description:         This package is now obsolete since all functions have moved to the Vec package, see <http://hackage.haskell.org/package/Vec>.
 category:            Math, Graphics
 author:              Tobias Bexelius
 homepage:            https://github.com/tobbebex/Vec-Transform
 library 
-  build-depends:   
-                   base >= 4 && <5,
-                   Vec == 1.0.1
-  hs-source-dirs:  src
-  ghc-options:     -Wall
-  exposed-modules: Data.Vec.LinAlg.Transform3D
-
+ 
